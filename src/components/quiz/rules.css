@@ -1,0 +1,28 @@
+.main-container {
+  flex-grow: 1;
+  margin: 2rem;
+}
+
+.rules {
+  margin: 1rem;
+  width: 35rem;
+}
+
+.ulist-style-circle {
+  display: inline-block;
+}
+
+.ulist-style-circle > li::marker {
+  color: var(--default-color);
+}
+
+.ulist-style-circle > li {
+  margin: 0.5rem;
+  padding: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .rules {
+    width: 100%;
+  }
+}

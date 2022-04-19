@@ -1,0 +1,20 @@
+.pagewrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0%;
+  padding: 0%;
+}
+
+:root {
+  --gray-color: #f5f5f6;
+}
+
+.no-link-decoration {
+  text-decoration: none;
+}
