@@ -13,7 +13,7 @@ function LoginForm() {
   const [errorData, setErrorData] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const location = useLocation();
-  const { setAuthToken, setAuthUser, authToken, authUser } = useAuth();
+  const { setAuthToken, setAuthUser } = useAuth();
   const navigate = useNavigate();
 
   const loginHandler = async (e: FormEvent, isGuest: boolean) => {

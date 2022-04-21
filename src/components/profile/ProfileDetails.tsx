@@ -10,7 +10,7 @@ function ProfileDetails() {
 
   useEffect(() => {
     if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
-  }, []);
+  }, [setAuthUser]);
 
   function logoutHandler() {
     localStorage.removeItem("authToken");
