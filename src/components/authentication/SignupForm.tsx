@@ -2,16 +2,18 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./auth.css";
+import { useSignupHandler } from "hooks";
 
 function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
+    useSignupHandler();
   const location = useLocation();
-
   return (
     <div className="auth-container flex-column-center signup-container middle-content">
       <h4 className="heading4">SIGN UP</h4>
-      <form className="form-auth">
+      <form className="form-auth" onSubmit={(e) => signUpHandler(e)}>
         <div className="form-input ">
           {" "}
           <label htmlFor="firstName" className="input-label">
@@ -22,10 +24,23 @@ function SignupForm() {
             placeholder="Enter First Name"
             className="input-primary border-box"
             id="firstName"
+            value={formData.firstName}
+            onChange={(e) =>
+              formDispatch({
+                type: "INPUT_FIRST_NAME",
+                payload: e.target.value,
+              })
+            }
+            onFocus={() =>
+              errorDispatch({
+                type: "ERROR_FIRST_NAME",
+                payload: "",
+              })
+            }
             required
           />
         </div>
-        {/* {errorData.firstName.length > 0 && (
+        {errorData.firstName.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
               icon="circle-exclamation"
@@ -34,7 +49,7 @@ function SignupForm() {
             {"    "}
             <div> {errorData.firstName}</div>
           </div>
-        )} */}
+        )}
         <div className="form-input">
           {" "}
           <label htmlFor="firstName" className="input-label">
@@ -45,10 +60,23 @@ function SignupForm() {
             placeholder="Enter Last Name"
             id="lastName"
             className="input-primary border-box"
+            value={formData.lastName}
+            onChange={(e) =>
+              formDispatch({
+                type: "INPUT_LAST_NAME",
+                payload: e.target.value,
+              })
+            }
+            onFocus={() =>
+              errorDispatch({
+                type: "ERROR_LAST_NAME",
+                payload: "",
+              })
+            }
             required
           />
         </div>
-        {/* {errorData.lastName.length > 0 && (
+        {errorData.lastName.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
               icon="circle-exclamation"
@@ -57,7 +85,7 @@ function SignupForm() {
             {"    "}
             <div> {errorData.lastName}</div>
           </div>
-        )} */}
+        )}
 
         <div className="form-input">
           {" "}
@@ -68,10 +96,20 @@ function SignupForm() {
             placeholder="Enter email "
             id="email"
             className="input-primary border-box"
+            value={formData.email}
+            onChange={(e) =>
+              formDispatch({ type: "INPUT_EMAIL", payload: e.target.value })
+            }
+            onFocus={() =>
+              errorDispatch({
+                type: "ERROR_EMAIL",
+                payload: "",
+              })
+            }
             required
           />
         </div>
-        {/* {errorData.email.length > 0 && (
+        {errorData.email.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
               icon="circle-exclamation"
@@ -80,7 +118,7 @@ function SignupForm() {
             {"    "}
             <div> {errorData.email}</div>
           </div>
-        )} */}
+        )}
         <div className="form-input">
           <label htmlFor="password" className="input-label">
             Password *
@@ -91,6 +129,19 @@ function SignupForm() {
               id="password"
               placeholder="Enter password"
               className="input-no-outline"
+              value={formData.password}
+              onChange={(e) =>
+                formDispatch({
+                  type: "INPUT_PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              onFocus={() =>
+                errorDispatch({
+                  type: "ERROR_PASSWORD",
+                  payload: "",
+                })
+              }
               required
             />
             <button
@@ -105,7 +156,7 @@ function SignupForm() {
             </button>
           </div>
         </div>
-        {/* {errorData.password.length > 0 && (
+        {errorData.password.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
               icon="circle-exclamation"
@@ -114,7 +165,7 @@ function SignupForm() {
             {"    "}
             <div> {errorData.password}</div>
           </div>
-        )} */}
+        )}
 
         <div className="form-input">
           <label htmlFor="confirmpassword" className="input-label">
@@ -126,6 +177,19 @@ function SignupForm() {
               id="confirmpassword"
               placeholder="Confirm password"
               className="input-no-outline"
+              value={formData.confirmPassword}
+              onChange={(e) =>
+                formDispatch({
+                  type: "INPUT_CONFIRM_PASSWORD",
+                  payload: e.target.value,
+                })
+              }
+              onFocus={() =>
+                errorDispatch({
+                  type: "ERROR_CONFIRM_PASSWORD",
+                  payload: "",
+                })
+              }
               required
             />
             <button
@@ -140,7 +204,7 @@ function SignupForm() {
             </button>
           </div>
         </div>
-        {/* {errorData.confirmPassword.length > 0 && (
+        {errorData.confirmPassword.length > 0 && (
           <div className="error">
             <FontAwesomeIcon
               icon="circle-exclamation"
@@ -149,7 +213,7 @@ function SignupForm() {
             {"    "}
             <div> {errorData.confirmPassword}</div>
           </div>
-        )} */}
+        )}
 
         <button type="submit" className="btn btn-primary btn-auth">
           SIGN UP
