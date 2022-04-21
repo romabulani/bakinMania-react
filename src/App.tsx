@@ -1,4 +1,3 @@
-import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -14,6 +13,7 @@ import {
   SignupForm,
   Result,
   Question,
+  ProfileDetails,
 } from "components";
 
 function App() {
@@ -22,17 +22,46 @@ function App() {
       <Navigation />
       <ScrollToTop />
       <ToastContainer position="bottom-right" autoClose={800} draggable />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignupForm />} />
-        <Route path="/login" element={<LoginForm />} />
+      <div className="middle-content">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm />} />
 
-        {/* <Route path="/" element={<PrivateRoute />}> */}
-        <Route path="/rules" element={<Rules />} />
-        <Route path="/question" element={<Question />} />
-        <Route path="/results" element={<Result />} />
-        {/* </Route> */}
-      </Routes>
+          <Route
+            path="/rules"
+            element={
+              <PrivateRoute>
+                <Rules />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/question"
+            element={
+              <PrivateRoute>
+                <Question />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/results"
+            element={
+              <PrivateRoute>
+                <Result />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <PrivateRoute>
+                <ProfileDetails />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
