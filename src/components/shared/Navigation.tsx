@@ -44,7 +44,7 @@ function Navigation() {
               <FontAwesomeIcon
                 icon="user"
                 className="icon-style"
-                onClick={() => navigate("/login")}
+                onClick={() => navigate("/profile")}
               ></FontAwesomeIcon>
             </div>
           </div>
