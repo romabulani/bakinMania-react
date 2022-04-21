@@ -32,9 +32,16 @@
   font-size: 13px;
 }
 
-.btn-auth {
+.btn-primary.btn-auth {
   width: 100%;
-  margin: unset;
+  height: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-outline-primary.btn-auth {
+  width: 100%;
 }
 
 .btn-link-primary,
@@ -103,6 +110,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+.middle-content {
+  flex-grow: 1;
 }
 
 @media only screen and (max-width: 640px) {
