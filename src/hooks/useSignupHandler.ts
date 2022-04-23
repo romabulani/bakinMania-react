@@ -204,9 +204,9 @@ function useSignupHandler() {
             setAuthUser(userObj);
             localStorage.setItem("authUser", JSON.stringify(userObj));
           });
-        }
-        toast.success("Signed up and Logged in successfully!");
-        navigate("/");
+          toast.success("Signed up and Logged in successfully!");
+          navigate("/");
+        } else toast.error("Account already exists!");
       }
     } catch (e) {
       console.error("signUpHandler : Couldn't signup", e);
