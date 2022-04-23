@@ -12,7 +12,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [authUser, setAuthUser] = useState(
     localStorageUser ? JSON.parse(localStorageUser) : null
   );
-
   return (
     <AuthContext.Provider
       value={{ authToken, setAuthToken, authUser, setAuthUser }}
