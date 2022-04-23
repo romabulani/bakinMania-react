@@ -1,12 +1,8 @@
-export type AuthStateType = {
-  token: string;
-  username: string;
-  userDetails: null | userType;
-};
-
 export type userType = {
   email: string;
   name: string;
+  uid: string;
+  authProvider: string;
   quizzesTaken: [];
 } | null;
 

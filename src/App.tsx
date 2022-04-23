@@ -12,7 +12,6 @@ import {
   ScrollToTop,
   SignupForm,
   Result,
-  Question,
   ProfileDetails,
 } from "components";
 
@@ -29,18 +28,10 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
 
           <Route
-            path="/rules"
+            path="/quiz/:quizId"
             element={
               <PrivateRoute>
                 <Rules />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/question"
-            element={
-              <PrivateRoute>
-                <Question />
               </PrivateRoute>
             }
           />

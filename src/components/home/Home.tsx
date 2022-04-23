@@ -1,14 +1,28 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useQuiz } from "contexts";
+import { categoryData } from "data";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./home.css";
+
 function Home() {
-  const imgSrcUrls = [
-    "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999358/quiz/cakes.webp",
-    "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999358/quiz/muffins.webp",
-    "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999359/quiz/sweets.webp",
-    "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999359/quiz/baking.webp",
-    "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999359/quiz/cakedecoration.webp",
-  ];
+  const scrollRef = useRef<null | HTMLDivElement>(null);
+  const { quizDispatch } = useQuiz();
+  const scrollToCategories = () => {
+    if (scrollRef && scrollRef.current)
+      scrollRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+  };
+
+  useEffect(() => {
+    quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: -1 });
+    quizDispatch({ type: "RESET_ANSWERS" });
+    quizDispatch({ type: "SET_SCORE", payload: 0 });
+  }, [quizDispatch]);
+
   return (
     <>
       <div className="hero-container">
@@ -19,30 +33,42 @@ function Home() {
           <p className="bold-text text-center">
             Do you know about cakes, desserts and baking?
           </p>
-          <div className="flex-row-center">
-            <button className="btn btn-primary">EXPLORE</button>
-            <button className="btn btn-outline-primary">CREATE QUIZ</button>
-          </div>
+          <button className="btn btn-primary" onClick={scrollToCategories}>
+            EXPLORE
+          </button>
         </div>
       </div>
       <main className="container-main flex-column-center">
         <h3 className="text-center heading3">Quiz Categories</h3>
-        <div className="cards flex-row-center">
-          {imgSrcUrls.map((url) => (
-            <div className="card card-default" key={url}>
+        <div className="cards flex-row-center" ref={scrollRef}>
+          {categoryData.map((category) => (
+            <div className="card card-default" key={category._id}>
               <div className="card-img-container">
-                <img src={url} className="card-img" alt="cakes" />
+                <img
+                  src={category.img.src}
+                  className="card-img"
+                  alt={category.img.altText}
+                />
               </div>
-              <div className="card-header">Cakes</div>
-              <div className="card-title">Bring on the cake!</div>
+              <div className="card-header">{category.categoryName}</div>
+              <div className="card-title">{category.description}</div>
               <div className="card-buttons">
                 <Link
                   className="card-button btn btn-primary no-link-decoration"
-                  to="/rules"
+                  to={`/quiz/${category._id}`}
                 >
                   PLAY NOW
                 </Link>
-                <FontAwesomeIcon icon="share" className="card-icon" />
+                <FontAwesomeIcon
+                  icon="share"
+                  className="card-icon"
+                  onClick={() => {
+                    navigator.clipboard.writeText(
+                      `${window.location.href}quiz/${category._id}`
+                    );
+                    toast.info("Link Copied. Start sharing!");
+                  }}
+                />
               </div>
             </div>
           ))}

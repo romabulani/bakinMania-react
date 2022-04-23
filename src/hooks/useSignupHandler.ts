@@ -177,7 +177,7 @@ function useSignupHandler() {
     return signupFlag;
   };
 
-  const signUpHandler = async (e: FormEvent) => {
+  const signUpHandler = async (e: FormEvent, location: any) => {
     e.preventDefault();
     try {
       if (checkValidation()) {
@@ -204,9 +204,11 @@ function useSignupHandler() {
             setAuthUser(userObj);
             localStorage.setItem("authUser", JSON.stringify(userObj));
           });
-        }
-        toast.success("Signed up and Logged in successfully!");
-        navigate("/");
+          toast.success("Signed up and Logged in successfully!");
+          if (location.state)
+            navigate(location?.state?.from?.pathname, { replace: true });
+          else navigate("/");
+        } else toast.error("Account already exists!");
       }
     } catch (e) {
       console.error("signUpHandler : Couldn't signup", e);

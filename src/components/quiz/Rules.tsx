@@ -1,32 +1,49 @@
-import { Link } from "react-router-dom";
+import { useQuiz } from "contexts";
+import { quizData } from "data";
+import { useParams } from "react-router-dom";
+import { Question } from "./Question";
 import "./rules.css";
 
 function Rules() {
+  const params = useParams();
+  const { quizDispatch, quizState } = useQuiz();
+
+  const onStartClickHandler = () => {
+    quizDispatch({ type: "SET_CATEGORY", payload: params.quizId || "" });
+    quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: 0 });
+    quizDispatch({
+      type: "SET_ACTIVE_QUIZ",
+      payload: quizData[params.quizId as keyof typeof quizData].questions,
+    });
+    quizDispatch({
+      type: "SET_ACTIVE_QUIZ_ANSWERS",
+      payload: quizData[params.quizId as keyof typeof quizData].answers,
+    });
+  };
+
   return (
-    <main className="main-container flex-column-center">
-      <div className="rules flex-column-center">
-        <h3 className="text-center heading3">Cakes Quiz</h3>
-        <ul className="ulist-style-circle">
-          <li>There are total 3 Levels Easy, Medium and Hard.</li>
-          <li>
-            You can go to the next level only after completing the previous one.
-          </li>
-          <li>For each question, you will get 90 seconds to answer.</li>
-          <li>Each level will have 5 questions.</li>
-          <li>Each correct answer will give you 20 points.</li>
-          <li>You require atleast 60 points to pass that level.</li>
-          <li>You cannot select multiple answers for one question.</li>
-          <li>You cannot skip the question.</li>
-          <li>
-            Once you have navigated to the next question, you cannot come back
-            to previous one.
-          </li>
-        </ul>
-        <Link className="btn btn-primary no-link-decoration" to="/question">
-          Start Quiz
-        </Link>
-      </div>
-    </main>
+    <>
+      {quizState.activeQuestion === -1 ? (
+        <main className="main-container flex-column-center">
+          <div className="rules flex-column-center">
+            <h3 className="text-center heading3">Rules for Game</h3>
+            <ul className="ulist-style-circle">
+              <li>For each question, you will get 60 seconds to answer.</li>
+              <li>Each correct answer will give you 20 points.</li>
+              <li>You cannot select multiple answers for one question.</li>
+            </ul>
+            <button
+              className="btn btn-primary no-link-decoration"
+              onClick={onStartClickHandler}
+            >
+              Let's Start
+            </button>
+          </div>
+        </main>
+      ) : (
+        <Question />
+      )}
+    </>
   );
 }
 

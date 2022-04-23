@@ -9,11 +9,11 @@ function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
-  const location = useLocation();
+  const location: any = useLocation();
   return (
     <div className="auth-container flex-column-center signup-container middle-content">
       <h4 className="heading4">SIGN UP</h4>
-      <form className="form-auth" onSubmit={(e) => signUpHandler(e)}>
+      <form className="form-auth" onSubmit={(e) => signUpHandler(e, location)}>
         <div className="form-input ">
           {" "}
           <label htmlFor="firstName" className="input-label">

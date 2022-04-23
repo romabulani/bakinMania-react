@@ -38,7 +38,7 @@
   color: var(--primary-color);
   cursor: pointer;
   display: inline-flex;
-  height: 2.5rem;
+  height: fit-content;
   margin: 0.5rem;
   padding: 0.625rem 1.5rem;
   width: 70%;
@@ -46,6 +46,11 @@
 }
 
 .option-label:hover {
+  background-color: var(--primary-color);
+  color: var(--light-color);
+}
+
+.active-option {
   background-color: var(--primary-color);
   color: var(--light-color);
 }

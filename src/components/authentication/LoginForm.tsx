@@ -12,7 +12,7 @@ function LoginForm() {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const [errorData, setErrorData] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const location = useLocation();
+  const location: any = useLocation();
   const { setAuthToken, setAuthUser } = useAuth();
   const navigate = useNavigate();
 
@@ -54,7 +54,9 @@ function LoginForm() {
           });
         }
         toast.success("Logged in successfully!");
-        navigate("/");
+        if (location.state)
+          navigate(location?.state?.from?.pathname, { replace: true });
+        else navigate("/");
       }
     } catch (e) {
       setErrorData(true);
