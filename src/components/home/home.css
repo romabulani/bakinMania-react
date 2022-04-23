@@ -31,6 +31,10 @@
   height: 18rem;
 }
 
+.card-img-container {
+  min-height: 10rem;
+}
+
 .card > .card-header {
   padding-top: 1rem;
 }

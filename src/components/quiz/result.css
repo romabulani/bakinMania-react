@@ -22,7 +22,7 @@
   color: var(--primary-color);
   cursor: pointer;
   display: inline-flex;
-  height: 2.5rem;
+  height: fit-content;
   margin: 0.5rem;
   padding: 0.625rem 1.5rem;
   width: 70%;
