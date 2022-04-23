@@ -64,7 +64,7 @@ function Home() {
                   className="card-icon"
                   onClick={() => {
                     navigator.clipboard.writeText(
-                      `${window.location.href}/quiz/${category._id}`
+                      `${window.location.href}quiz/${category._id}`
                     );
                     toast.info("Link Copied");
                   }}

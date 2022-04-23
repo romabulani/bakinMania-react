@@ -1,5 +1,5 @@
 import { useQuiz } from "contexts";
-import { categoryData, quizData } from "data";
+import { quizData } from "data";
 import { useParams } from "react-router-dom";
 import { Question } from "./Question";
 import "./rules.css";
@@ -7,10 +7,6 @@ import "./rules.css";
 function Rules() {
   const params = useParams();
   const { quizDispatch, quizState } = useQuiz();
-
-  const categoryName = categoryData.filter(
-    (category) => category._id === quizState.category
-  )[0].categoryName;
 
   const onStartClickHandler = () => {
     quizDispatch({ type: "SET_CATEGORY", payload: params.quizId || "" });
@@ -30,7 +26,7 @@ function Rules() {
       {quizState.activeQuestion === -1 ? (
         <main className="main-container flex-column-center">
           <div className="rules flex-column-center">
-            <h3 className="text-center heading3">{`${categoryName} Quiz`}</h3>
+            <h3 className="text-center heading3">Rules for Game</h3>
             <ul className="ulist-style-circle">
               <li>For each question, you will get 60 seconds to answer.</li>
               <li>Each correct answer will give you 20 points.</li>
