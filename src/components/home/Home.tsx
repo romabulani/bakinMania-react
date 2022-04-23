@@ -66,7 +66,7 @@ function Home() {
                     navigator.clipboard.writeText(
                       `${window.location.href}quiz/${category._id}`
                     );
-                    toast.info("Link Copied");
+                    toast.info("Link Copied. Start sharing!");
                   }}
                 />
               </div>
