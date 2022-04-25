@@ -61,7 +61,7 @@ function Home() {
                 </Link>
                 <FontAwesomeIcon
                   icon="share"
-                  className="card-icon"
+                  className="card-icon icon-style"
                   onClick={() => {
                     navigator.clipboard.writeText(
                       `${window.location.href}quiz/${category._id}`
