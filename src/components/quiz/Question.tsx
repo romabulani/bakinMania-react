@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useQuiz } from "contexts";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./question.css";
 
@@ -10,8 +10,29 @@ function Question() {
   const { activeQuestion, activeQuiz } = quizState;
   const [selectedAnswer, setSelectedAnswer] = useState("");
   const optionsArray = activeQuiz[activeQuestion]?.options;
+  const [timerSec, setTimerSec] = useState(60);
 
-  const onNextClickHandler = async () => {
+  useEffect(() => {
+    const timerId = setInterval(
+      () => setTimerSec((timerSec) => timerSec - 1),
+      1000
+    );
+    if (timerSec === 0) {
+      if (activeQuestion === 4) navigate("/results", { replace: true });
+      else {
+        quizDispatch({
+          type: "SET_ACTIVE_QUESTION",
+          payload: activeQuestion + 1,
+        });
+        setTimerSec(60);
+      }
+    }
+    return () => clearInterval(timerId);
+    // eslint-disable-next-line
+  }, [timerSec]);
+
+  const onNextClickHandler = () => {
+    setTimerSec(60);
     quizDispatch({
       type: "SET_ACTIVE_QUESTION",
       payload: activeQuestion + 1,
@@ -25,6 +46,16 @@ function Question() {
     }
   };
 
+  const onQuitClickHandler = () => {
+    quizDispatch({
+      type: "SET_ACTIVE_QUESTION",
+      payload: -1,
+    });
+    quizDispatch({
+      type: "RESET_ANSWERS",
+    });
+    navigate("/", { replace: true });
+  };
   return (
     <main className="main-container flex-row-center">
       {activeQuestion <= 4 && (
@@ -33,7 +64,7 @@ function Question() {
             <div className="question-number">Question {activeQuestion + 1}</div>
             <div className="timer">
               <FontAwesomeIcon icon="stopwatch" className="keyword" />
-              <span>00:59</span>
+              <span className="p-left-5">{timerSec} sec</span>
             </div>
           </div>
           <div className="question-and-options flex-column-center">
@@ -60,6 +91,14 @@ function Question() {
                 </label>
               ))}
             </div>
+          </div>
+          <div className="question-button-container">
+            <button
+              className="btn btn-outline-error btn-quit"
+              onClick={onQuitClickHandler}
+            >
+              Quit
+            </button>
             <button
               className="btn btn-primary no-link-decoration"
               onClick={onNextClickHandler}
