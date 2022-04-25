@@ -14,15 +14,19 @@ import {
   Result,
   ProfileDetails,
   NotFound,
+  Leaderboard,
+  Loader,
 } from "components";
-import { useTheme } from "contexts";
+import { useQuiz, useTheme } from "contexts";
 
 function App() {
   const { theme } = useTheme();
+  const { loader } = useQuiz();
   return (
     <div className="App pagewrapper" data-theme={theme}>
       <Navigation />
       <ScrollToTop />
+      {loader && <Loader />}
       <ToastContainer
         theme={theme === "dark" ? "dark" : "light"}
         position="bottom-right"
@@ -34,7 +38,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
-
+          <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="/quiz/:quizId"
             element={
