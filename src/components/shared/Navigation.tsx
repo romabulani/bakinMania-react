@@ -11,7 +11,11 @@ function Navigation() {
         <div className="brand">
           <Link to="/">
             <img
-              src="https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999358/quiz/logo_an0oti.webp"
+              src={
+                theme === "dark"
+                  ? "https://res.cloudinary.com/dtrjdcrme/image/upload/v1650883482/quiz/logo_darktheme.webp"
+                  : "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649076577/ecommerce/logo_sr3h5w.webp"
+              }
               alt="muffin-logo"
               className="logo"
             />
@@ -20,19 +24,6 @@ function Navigation() {
             Bakin Mania
           </Link>
         </div>
-        <form className="searchbar-container">
-          <input
-            type="search"
-            placeholder="Search for Quizzes..."
-            className="nav-search-field"
-          />
-          <button className="btn-no-decoration" type="submit">
-            <FontAwesomeIcon
-              icon="search"
-              className="search-icon"
-            ></FontAwesomeIcon>
-          </button>
-        </form>
         <div className="nav-right">
           <div className="nav-icons-container">
             <div className="nav-item nav-icon">
@@ -57,19 +48,6 @@ function Navigation() {
           </div>
         </div>
       </nav>
-      <form className="mobile-searchbar-container" aria-label="search">
-        <input
-          type="search"
-          placeholder="Search for Items"
-          className="nav-search-field"
-        />
-        <button className="btn-no-decoration" type="submit">
-          <FontAwesomeIcon
-            icon="search"
-            className="search-icon"
-          ></FontAwesomeIcon>
-        </button>
-      </form>
     </>
   );
 }
