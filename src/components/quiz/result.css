@@ -56,7 +56,8 @@
   .results-container,
   .result-container,
   .result-label,
-  .question-header {
-    width: 100%;
+  .question-header,
+  .result-question-header {
+    width: 90vw;
   }
 }
