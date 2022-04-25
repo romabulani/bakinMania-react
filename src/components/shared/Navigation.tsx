@@ -1,8 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./nav.css";
+import { useTheme } from "contexts";
 function Navigation() {
   const navigate = useNavigate();
+  const { theme, switchTheme } = useTheme();
   return (
     <>
       <nav className="nav-container">
@@ -39,7 +41,12 @@ function Navigation() {
                 className="icon-style"
               ></FontAwesomeIcon>
             </div>
-
+            <div className="nav-item nav-icon" onClick={switchTheme}>
+              <FontAwesomeIcon
+                icon={theme === "light" ? "moon" : "sun"}
+                className="icon-style"
+              />
+            </div>
             <div className="nav-item nav-icon icon-person">
               <FontAwesomeIcon
                 icon="user"
