@@ -1,0 +1,44 @@
+.dashboard {
+  width: 50vw;
+  margin-top: 2.5rem;
+}
+
+.flex-row-spacebetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quiz-card {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  background-color: var(--gray-color);
+  border-radius: 5px;
+  padding: 5px 1rem;
+}
+
+.category-and-retake {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-retake {
+  height: 1.8rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 0;
+}
+
+.large-font-size {
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 640px) {
+  .dashboard {
+    width: 90vw;
+  }
+  .large-font-size {
+    font-size: 1rem;
+  }
+}

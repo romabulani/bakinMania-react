@@ -30,6 +30,7 @@ function Navigation() {
               <FontAwesomeIcon
                 icon="trophy"
                 className="icon-style"
+                onClick={() => navigate("/leaderboard")}
               ></FontAwesomeIcon>
             </div>
             <div className="nav-item nav-icon" onClick={switchTheme}>
