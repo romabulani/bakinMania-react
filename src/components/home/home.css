@@ -5,9 +5,10 @@
 }
 
 .bold-text {
-  color: black;
+  color: var(--text-color);
   display: block;
   font-weight: 600;
+  letter-spacing: 1px;
   padding: 6px;
 }
 
@@ -48,9 +49,12 @@
 }
 
 .card-icon {
-  color: var(--default-color);
   margin-right: 0.5rem;
   padding: 0;
+}
+
+.card-icon:hover {
+  background-color: unset;
 }
 
 .card-button {
