@@ -25,11 +25,10 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
           ...state,
           selectedAnswers: [...state.selectedAnswers, action.payload],
         };
-
       case "SET_SCORE":
         return {
           ...state,
-          score: state.score + action.payload,
+          score: action.payload,
         };
       case "SET_ACTIVE_QUESTION":
         return {

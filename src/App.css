@@ -1,1 +1,11 @@
 @import "./styles/global.css";
+.App {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: all 0.5s;
+}
+button {
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  transition: all 0.5s;
+}

@@ -30,6 +30,9 @@
   width: 65%;
   display: block;
   font-size: 13px;
+  background: transparent;
+  caret-color: var(--text-color);
+  color: var(--text-color);
 }
 
 .btn-primary.btn-auth {
@@ -110,10 +113,16 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  background: transparent;
+  color: var(--text-color);
 }
 
 .middle-content {
   flex-grow: 1;
+}
+
+span {
+  color: var(--text-color);
 }
 
 @media only screen and (max-width: 640px) {

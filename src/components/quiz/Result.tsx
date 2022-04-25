@@ -9,13 +9,8 @@ function Result() {
   const { authUser } = useAuth();
   const navigate = useNavigate();
   const [currScore, setCurrScore] = useState(0);
-  const {
-    selectedAnswers,
-    activeQuiz,
-    activeQuizAnswers,
-    activeQuestion,
-    score,
-  } = quizState;
+  const { selectedAnswers, activeQuiz, activeQuizAnswers, activeQuestion } =
+    quizState;
 
   const getClassname = (currOption: string, index: number) => {
     if (activeQuizAnswers[index] === currOption) return "result-label-success";
@@ -28,20 +23,13 @@ function Result() {
     for (let i = 0; i < activeQuizAnswers.length; i++)
       if (activeQuizAnswers[i] === selectedAnswers[i]) innerCurrScore += 20;
     setCurrScore(innerCurrScore);
-    quizDispatch({ type: "SET_SCORE", payload: currScore });
+    quizDispatch({ type: "SET_SCORE", payload: innerCurrScore });
     async function addScore() {
       await addScoreToDatabase(innerCurrScore, authUser, quizState);
     }
     addScore();
-    quizDispatch({ type: "SET_SCORE", payload: 0 });
-  }, [
-    activeQuizAnswers,
-    authUser,
-    currScore,
-    quizDispatch,
-    quizState,
-    selectedAnswers,
-  ]);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     if (activeQuestion === -1) navigate("/");
@@ -51,15 +39,15 @@ function Result() {
     <main className="main-container flex-row-center">
       <div className="results-container flex-column-center">
         <h3 className="heading3">{`${
-          score >= 60
-            ? "🎉 Congratulations!! You passed the Level"
+          currScore >= 60
+            ? "🎉 Congratulations!! You passed the Quiz"
             : "😔 Oh No! You couldn't Pass"
         }`}</h3>
         <h4 className="heading4">{`You scored ${currScore}`}</h4>
         {activeQuiz.map((quiz, index) => (
-          <div className="result-co ntainer flex-column-center" key={index}>
+          <div className="result-container flex-column-center" key={index}>
             <div className="question-number">Question {index + 1}</div>
-            <div className="question-header">{quiz.statement}</div>
+            <div className="result-question-header">{quiz.statement}</div>
             <div className="options-container flex-column-center">
               {quiz.options.map((option) => (
                 <label

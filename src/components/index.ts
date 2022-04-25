@@ -9,3 +9,4 @@ export { Rules } from "./quiz/Rules";
 export { Question } from "./quiz/Question";
 export { Result } from "./quiz/Result";
 export { ProfileDetails } from "./profile/ProfileDetails";
+export { NotFound } from "./shared/NotFound";

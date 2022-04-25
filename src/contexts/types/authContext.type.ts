@@ -4,6 +4,7 @@ export type userType = {
   uid: string;
   authProvider: string;
   quizzesTaken: [];
+  score: number;
 } | null;
 
 export type AuthContextType = {

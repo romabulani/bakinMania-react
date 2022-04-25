@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "assets";
 import { BrowserRouter as Router } from "react-router-dom";
-import { AuthProvider, QuizProvider } from "contexts";
+import { AuthProvider, QuizProvider, ThemeProvider } from "contexts";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -11,11 +11,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Router>
-      <AuthProvider>
-        <QuizProvider>
-          <App />
-        </QuizProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <QuizProvider>
+            <App />
+          </QuizProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   </React.StrictMode>
 );

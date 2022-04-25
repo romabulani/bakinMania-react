@@ -28,8 +28,14 @@ const addScoreToDatabase = async (
   await updateDoc(getUser, {
     quizzesTaken: [
       ...userData.quizzesTaken,
-      { id: Date.now(), categoryName, score: currScore },
+      {
+        id: Date.now(),
+        categoryName,
+        categoryId: quizState.category,
+        score: currScore,
+      },
     ],
+    totalScore: userData.totalScore + currScore,
   });
 };
 

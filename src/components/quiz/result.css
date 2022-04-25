@@ -4,15 +4,24 @@
   padding: 1rem;
 }
 
-.question-header,
-.question-number {
-  width: 80%;
+.result-question-header {
+  width: 60%;
+  align-self: center;
 }
 
 .btn-primary {
   height: fit-content;
   padding: 0.625rem;
   width: fit-content;
+}
+
+.btn-outline-error {
+  height: fit-content;
+  padding: 0.625rem;
+}
+
+.btn-quit {
+  width: 5rem;
 }
 
 .result-label {
@@ -47,8 +56,7 @@
   .results-container,
   .result-container,
   .result-label,
-  .question-header,
-  .question-number {
+  .question-header {
     width: 100%;
   }
 }

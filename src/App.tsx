@@ -13,14 +13,22 @@ import {
   SignupForm,
   Result,
   ProfileDetails,
+  NotFound,
 } from "components";
+import { useTheme } from "contexts";
 
 function App() {
+  const { theme } = useTheme();
   return (
-    <div className="App pagewrapper">
+    <div className="App pagewrapper" data-theme={theme}>
       <Navigation />
       <ScrollToTop />
-      <ToastContainer position="bottom-right" autoClose={800} draggable />
+      <ToastContainer
+        theme={theme === "dark" ? "dark" : "light"}
+        position="bottom-right"
+        autoClose={800}
+        draggable
+      />
       <div className="middle-content">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -51,6 +59,7 @@ function App() {
               </PrivateRoute>
             }
           />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
       <Footer />

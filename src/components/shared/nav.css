@@ -77,38 +77,6 @@
   color: var(--primary-color);
 }
 
-.searchbar-container {
-  background-color: var(--gray-color);
-  border-radius: 5px;
-  display: inline-flex;
-  height: 75%;
-  margin: 10px 0;
-  padding: 6px;
-  width: 22rem;
-}
-
-.mobile-searchbar-container {
-  align-items: center;
-  background-color: var(--gray-color);
-  box-sizing: border-box;
-  display: inline-flex;
-  display: none;
-  height: 3rem;
-  padding: 1rem;
-  width: 100%;
-  position: sticky;
-  top: 3.5rem;
-  z-index: 6;
-}
-
-.nav-search-field {
-  background-color: transparent;
-  border: none;
-  font-size: 14px;
-  padding: 8px;
-  width: 100%;
-}
-
 .btn-no-decoration {
   outline: none;
   border: none;
@@ -116,30 +84,14 @@
   background: transparent;
 }
 
-.search-icon {
-  color: var(--default-color);
-  font-size: 1.2rem;
-  padding: 2px;
-}
-
-.nav-search-field:focus {
-  outline: none;
-}
-
 .icon-style {
   color: var(--default-color);
   cursor: pointer;
-  font-size: 1.7rem;
+  font-size: 1.4rem;
 }
 
 .icon-style:hover {
   color: var(--primary-color);
-}
-
-.search-icon {
-  color: var(--default-color);
-  font-size: 1.2rem;
-  padding: 2px;
 }
 
 .inline-flex {
@@ -166,14 +118,6 @@
 }
 /* Media Queries */
 @media only screen and (max-width: 1024px) {
-  .searchbar-container {
-    display: none;
-  }
-
-  .mobile-searchbar-container {
-    display: inline-flex;
-  }
-
   .brand-name {
     display: none;
   }
@@ -184,9 +128,5 @@
 
   .nav-icon {
     padding: 10px;
-  }
-
-  .icon-style {
-    font-size: 1.4rem;
   }
 }

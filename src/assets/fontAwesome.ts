@@ -10,6 +10,8 @@ import {
   faTrophy,
   faShare,
   faStopwatch,
+  faMoon,
+  faSun,
 } from "@fortawesome/free-solid-svg-icons";
 library.add(
   fab,
@@ -21,7 +23,9 @@ library.add(
   faEyeSlash,
   faTrophy,
   faShare,
-  faStopwatch
+  faStopwatch,
+  faMoon,
+  faSun
 );
 
 export { library };

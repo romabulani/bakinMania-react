@@ -25,6 +25,7 @@ const signup = async (name: string, email: string, password: string) => {
       authProvider: "local",
       email,
       quizzesTaken: [],
+      totalScore: 0,
     });
     login(email, password);
   } catch (err) {
