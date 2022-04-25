@@ -17,6 +17,11 @@ function Question() {
       () => setTimerSec((timerSec) => timerSec - 1),
       1000
     );
+    return () => clearInterval(timerId);
+    // eslint-disable-next-line
+  }, []);
+
+  useEffect(() => {
     if (timerSec === 0) {
       if (activeQuestion === 4) navigate("/results", { replace: true });
       else {
@@ -27,7 +32,6 @@ function Question() {
         setTimerSec(60);
       }
     }
-    return () => clearInterval(timerId);
     // eslint-disable-next-line
   }, [timerSec]);
 
