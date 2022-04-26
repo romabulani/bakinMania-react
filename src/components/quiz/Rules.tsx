@@ -31,6 +31,7 @@ function Rules() {
               <li>For each question, you will get 60 seconds to answer.</li>
               <li>Each correct answer will give you 20 points.</li>
               <li>You cannot select multiple answers for one question.</li>
+              <li>You cannot go back to the previous question.</li>
             </ul>
             <button
               className="btn btn-primary no-link-decoration"

@@ -8,6 +8,10 @@
   justify-content: space-between;
 }
 
+.dashboard-header {
+  padding-bottom: 5px;
+}
+
 .quiz-card {
   display: flex;
   justify-content: space-between;

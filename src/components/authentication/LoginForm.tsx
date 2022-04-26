@@ -34,29 +34,31 @@ function LoginForm() {
         if (isGuest)
           response = await login("adarshbalika@gmail.com", "adarshBalika123#");
         else response = await login(loginData.email, loginData.password);
-        const resUser: any = response?.user;
-        if (resUser) {
-          localStorage.setItem(
-            "authToken",
-            JSON.stringify(resUser?.accessToken)
-          );
+        if (response) {
+          const resUser: any = response?.user;
+          if (resUser) {
+            localStorage.setItem(
+              "authToken",
+              JSON.stringify(resUser?.accessToken)
+            );
 
-          setAuthToken(resUser.accessToken);
-          const q = query(
-            collection(db, "users"),
-            where("uid", "==", resUser.uid)
-          );
-          const querySnapshot1 = await getDocs(q);
-          querySnapshot1.forEach((doc) => {
-            const userObj: any = doc.data();
-            setAuthUser(userObj);
-            localStorage.setItem("authUser", JSON.stringify(userObj));
-          });
-        }
-        toast.success("Logged in successfully!");
-        if (location.state)
-          navigate(location?.state?.from?.pathname, { replace: true });
-        else navigate("/");
+            setAuthToken(resUser.accessToken);
+            const q = query(
+              collection(db, "users"),
+              where("uid", "==", resUser.uid)
+            );
+            const querySnapshot1 = await getDocs(q);
+            querySnapshot1.forEach((doc) => {
+              const userObj: any = doc.data();
+              setAuthUser(userObj);
+              localStorage.setItem("authUser", JSON.stringify(userObj));
+            });
+          }
+          toast.success("Logged in successfully!");
+          if (location.state)
+            navigate(location?.state?.from?.pathname, { replace: true });
+          else navigate("/");
+        } else setErrorData(true);
       }
     } catch (e) {
       setErrorData(true);

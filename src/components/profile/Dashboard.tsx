@@ -45,7 +45,7 @@ function Dashboard() {
         <h4 className="heading4">Your Progress</h4>
         <h4 className="heading4">{`Total Score : ${userData?.totalScore}`}</h4>
       </div>
-      <hr className="section-line" />
+      <hr />
       {userData?.quizzesTaken
         .reverse()
         .map(({ id, categoryId, categoryName, score }) => (
