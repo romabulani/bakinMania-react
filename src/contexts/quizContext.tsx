@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useState } from "react";
 import { QuizActionType, QuizContextType, QuizType } from "./types";
 
 const QuizContext = createContext<QuizContextType>({} as QuizContextType);
@@ -55,8 +55,11 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
   const [quizState, quizDispatch] = useReducer(quizReducer, initialQuizState);
+  const [loader, setLoader] = useState(false);
   return (
-    <QuizContext.Provider value={{ quizState, quizDispatch, initialQuizState }}>
+    <QuizContext.Provider
+      value={{ quizState, quizDispatch, initialQuizState, loader, setLoader }}
+    >
       {children}
     </QuizContext.Provider>
   );

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "contexts";
 import "./profile.css";
+import { Dashboard } from "./Dashboard";
 
 function ProfileDetails() {
   const { setAuthToken, authUser, setAuthUser } = useAuth();
@@ -23,23 +24,18 @@ function ProfileDetails() {
 
   return (
     <div className="">
-      <div className="flex-row-center ">
-        <div className="logout-container flex-column-center">
-          <div className="large-font-size">
+      <div className="profile-dashboard-container">
+        <div className="logout-container">
+          <div className="large-font-size account-header">
             Account Details<hr className="section-line"></hr>
           </div>
-
           <div className="flex-row-center profile-details">
-            <div className="flex-column profile-column">
-              <p>Name</p>
-              <p>Email</p>
-            </div>
             <div className="flex-column  profile-column">
               <p>{` ${authUser?.name}`}</p>
               <p>{` ${authUser?.email}`}</p>
             </div>
           </div>
-          <div className="large-font-size">
+          <div className="large-font-size account-header">
             Account Settings<hr className="section-line"></hr>
           </div>
           <button
@@ -49,6 +45,7 @@ function ProfileDetails() {
             Log Out
           </button>
         </div>
+        <Dashboard />
       </div>
     </div>
   );

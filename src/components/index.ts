@@ -10,3 +10,6 @@ export { Question } from "./quiz/Question";
 export { Result } from "./quiz/Result";
 export { ProfileDetails } from "./profile/ProfileDetails";
 export { NotFound } from "./shared/NotFound";
+export { Leaderboard } from "./leaderboard/Leaderboard";
+export { Dashboard } from "./profile/Dashboard";
+export { Loader } from "./shared/Loader";

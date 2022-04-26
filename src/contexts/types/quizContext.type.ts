@@ -47,4 +47,6 @@ export type QuizContextType = {
   quizState: QuizType;
   quizDispatch: (arg0: QuizActionType) => void;
   initialQuizState: QuizType;
+  loader: boolean;
+  setLoader: (arg0: boolean) => void;
 };

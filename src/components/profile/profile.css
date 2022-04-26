@@ -1,12 +1,19 @@
+.profile-dashboard-container {
+  display: flex;
+  column-gap: 10%;
+}
+
 .logout-container {
   border-radius: 5px;
-  border: 1px solid var(--default-color);
+  display: flex;
+  flex-direction: column;
   height: fit-content;
-  margin-left: 7rem;
-  margin-top: 3rem;
-  max-width: 30rem;
+  margin-left: 1rem;
+  top: 3rem;
+  max-width: 15rem;
   padding: 2rem;
   row-gap: 1rem;
+  position: sticky;
 }
 
 .row-format {
@@ -24,10 +31,25 @@
 .logout-btn {
   margin-left: 0;
   margin-top: 0;
+  width: fit-content;
 }
 
 @media only screen and (max-width: 640px) {
   .logout-container {
     margin-left: unset;
+    flex-direction: row;
+    justify-content: space-between;
+    min-width: 100vw;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .profile-dashboard-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .account-header {
+    display: none;
   }
 }
