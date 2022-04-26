@@ -46,7 +46,13 @@ function Result() {
         <h4 className="heading4">{`You scored ${currScore}`}</h4>
         {activeQuiz.map((quiz, index) => (
           <div className="result-container flex-column-center" key={index}>
-            <div className="question-number">Question {index + 1}</div>
+            <hr className="section-line" />
+            <div className="flex-row-spacebetween question-message-container">
+              <div className="question-number">Question {index + 1}</div>
+              {selectedAnswers[index] === "" && (
+                <div className="error-color">Option not selected</div>
+              )}
+            </div>
             <div className="result-question-header">{quiz.statement}</div>
             <div className="options-container flex-column-center">
               {quiz.options.map((option) => (

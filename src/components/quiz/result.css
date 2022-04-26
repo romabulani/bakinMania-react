@@ -7,6 +7,7 @@
 .result-question-header {
   width: 60%;
   align-self: center;
+  margin: 10px;
 }
 
 .btn-primary {
@@ -38,6 +39,10 @@
   font-size: 1.1rem;
 }
 
+.result-label:last-child {
+  margin: unset;
+}
+
 .result-label-success {
   background-color: var(--success-color);
 }
@@ -52,12 +57,26 @@
   color: var(--light-color);
 }
 
+.error-color {
+  color: var(--error-color);
+}
+
+.question-message-container {
+  width: 60%;
+  margin: 1rem 10px;
+}
+
+.section-line {
+  width: 60%;
+}
+
 @media only screen and (max-width: 640px) {
   .results-container,
   .result-container,
   .result-label,
   .question-header,
-  .result-question-header {
+  .result-question-header,
+  .question-message-container {
     width: 90vw;
   }
 }
