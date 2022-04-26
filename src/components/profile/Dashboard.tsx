@@ -46,27 +46,28 @@ function Dashboard() {
         <h4 className="heading4">{`Total Score : ${userData?.totalScore}`}</h4>
       </div>
       <hr />
-      {userData?.quizzesTaken
-        .reverse()
-        .map(({ id, categoryId, categoryName, score }) => (
-          <div key={id} className={`quiz-card `}>
-            <div className="category-and-retake">
-              <div className="large-font-size">{categoryName}</div>
-              <div>
-                <button
-                  className="btn btn-primary btn-retake"
-                  onClick={() => navigate(`/quiz/${categoryId}`)}
-                >
-                  Retake
-                </button>
+      {userData &&
+        [...userData.quizzesTaken]
+          .reverse()
+          .map(({ id, categoryId, categoryName, score }) => (
+            <div key={id} className={`quiz-card `}>
+              <div className="category-and-retake">
+                <div className="large-font-size">{categoryName}</div>
+                <div>
+                  <button
+                    className="btn btn-primary btn-retake"
+                    onClick={() => navigate(`/quiz/${categoryId}`)}
+                  >
+                    Retake
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className="large-font-size">{`${score} ${quizPassed(
-              score
-            )}`}</div>
-          </div>
-        ))}
+              <div className="large-font-size">{`${score} ${quizPassed(
+                score
+              )}`}</div>
+            </div>
+          ))}
     </div>
   );
 }
