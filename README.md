@@ -1,46 +1,57 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999358/quiz/logo_an0oti.webp" height="100" width="100" alt="logo"/>
+  <h1>Bakin Mania</h1>
+    <p>Are you also the foodie? Do you love Desserts? <a href="https://bakin-mania.netlify.app/">Bakin Mania</a> is for you! Its the Fun Quiz App which tests your knowledge on Cakes, Muffins, Indian Sweets and Baking!</p>
+ </div>
 
-## Available Scripts
+## How to run the app locally?
+```
+$ git https://github.com/romabulani/bakinMania-react.git
+$ cd bakinMania-react
+$ npm install
+$ npm start
+```
 
-In the project directory, you can run:
+## Screens in this project
+- Landing Page
+- Rules Page
+- Authentication (Login, Signup and Logout) Pages
+- MCQ based Question Page
+- Result Page with Answers & Score
+- Leaderboard
+- Dashboard
+- 404 (Not Found) Page
 
-### `npm start`
+## Features
+- Authentication including Login, Signup and Logout using Firebase. All the authentication forms have the proper validation.
+- Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category.
+- Rules page displaying the rules for the Quiz
+- Question Page with four options.
+- Timer for every question.
+- Quit Quiz on the Question Page.
+- User cannot go back to Previous Question.
+- Results page displaying the correct answers, answers chosen by user and the score for that quiz.
+- Leaderboard displaying the scores of all participants with their rank, name and total score.
+- Dashboard with user's details and the progress with all the quiz history of user. Retake option to take the quiz again.
+- Toggle Theme - Light and Dark Theme, theme is persistent even after page refresh.
+- Alerts in the app to notify the users about success/failure operations.
+- Loader is shown while the information is fetched.
+- 404 Page as the fallback for the routes not present in the project.
+- All the screens are Responsive.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech Stack and Tools
+- Typescript with React JS
+- Firebase for Backend
+- React Router v6
+- React Context API + useReducer
+- Vanilla CSS integrated with [Muffin UI](https://muffinui.netlify.app/) Component Library
+- Git For Version Control
+- Netlify for Deployment
+- Cloudinary for Image Hosting of Quiz Thumbnails
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Live Link
+[Bakin Mania](https://bakin-mania.netlify.app/)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Demo Video
+https://user-images.githubusercontent.com/42478246/165312993-1c10d758-f529-40ab-a2fe-53dd4e56a0c3.mp4
