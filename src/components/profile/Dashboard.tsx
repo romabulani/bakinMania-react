@@ -32,7 +32,8 @@ function Dashboard() {
       setUserData(response);
     }
     getUserDashboard();
-    setTimeout(() => setLoader(false), 500);
+    const timerId = setTimeout(() => setLoader(false), 500);
+    return () => clearTimeout(timerId);
     // eslint-disable-next-line
   }, []);
 

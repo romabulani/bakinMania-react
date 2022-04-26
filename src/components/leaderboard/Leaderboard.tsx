@@ -13,7 +13,8 @@ function Leaderboard() {
       setUserData(response);
     }
     getUsers();
-    setTimeout(() => setLoader(false), 1000);
+    const timerId = setTimeout(() => setLoader(false), 1000);
+    return () => clearTimeout(timerId);
     // eslint-disable-next-line
   }, []);
 
