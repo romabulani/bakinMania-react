@@ -25,7 +25,7 @@ $ npm start
 
 ## Features
 - Authentication including Login, Signup and Logout using Firebase. All the authentication forms have the proper validation.
-- Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category.
+- Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category. User can share the quiz with others.
 - Rules page displaying the rules for the Quiz
 - Question Page with four options.
 - Timer for every question.
