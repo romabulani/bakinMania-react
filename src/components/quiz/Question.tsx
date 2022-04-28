@@ -23,6 +23,10 @@ function Question() {
 
   useEffect(() => {
     if (timerSec === 0) {
+      quizDispatch({
+        type: "SET_ANSWERS",
+        payload: selectedAnswer,
+      });
       if (activeQuestion === 4) navigate("/results", { replace: true });
       else {
         quizDispatch({
@@ -45,6 +49,7 @@ function Question() {
       type: "SET_ANSWERS",
       payload: selectedAnswer,
     });
+    setSelectedAnswer("");
     if (activeQuestion === 4) {
       navigate("/results", { replace: true });
     }

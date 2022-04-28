@@ -9,9 +9,7 @@ function Result() {
   const { authUser } = useAuth();
   const navigate = useNavigate();
   const [currScore, setCurrScore] = useState(0);
-  const { selectedAnswers, activeQuiz, activeQuizAnswers, activeQuestion } =
-    quizState;
-
+  const { selectedAnswers, activeQuiz, activeQuizAnswers } = quizState;
   const getClassname = (currOption: string, index: number) => {
     if (activeQuizAnswers[index] === currOption) return "result-label-success";
     if (selectedAnswers[index] === currOption) return "result-label-failure";
@@ -24,6 +22,7 @@ function Result() {
       if (activeQuizAnswers[i] === selectedAnswers[i]) innerCurrScore += 20;
     setCurrScore(innerCurrScore);
     quizDispatch({ type: "SET_SCORE", payload: innerCurrScore });
+    quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: -1 });
     async function addScore() {
       await addScoreToDatabase(innerCurrScore, authUser, quizState);
     }
@@ -32,8 +31,8 @@ function Result() {
   }, []);
 
   useEffect(() => {
-    if (activeQuestion === -1) navigate("/");
-  }, [activeQuestion, navigate]);
+    if (selectedAnswers === []) navigate("/");
+  }, [selectedAnswers, navigate]);
 
   return (
     <main className="main-container flex-row-center">
@@ -68,7 +67,7 @@ function Result() {
           </div>
         ))}
 
-        <Link className="btn btn-primary no-link-decoration" to="/">
+        <Link className="btn btn-primary no-link-decoration" to="/" replace>
           BACK TO HOME
         </Link>
       </div>

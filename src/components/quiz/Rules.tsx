@@ -1,6 +1,6 @@
 import { useQuiz } from "contexts";
-import { quizData } from "data";
 import { useParams } from "react-router-dom";
+import { getQuiz } from "services";
 import { Question } from "./Question";
 import "./rules.css";
 
@@ -8,16 +8,21 @@ function Rules() {
   const params = useParams();
   const { quizDispatch, quizState } = useQuiz();
 
-  const onStartClickHandler = () => {
+  const onStartClickHandler = async () => {
+    const response = await getQuiz(params.quizId || "");
     quizDispatch({ type: "SET_CATEGORY", payload: params.quizId || "" });
     quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: 0 });
     quizDispatch({
       type: "SET_ACTIVE_QUIZ",
-      payload: quizData[params.quizId as keyof typeof quizData].questions,
+      payload: response?.questions,
     });
     quizDispatch({
       type: "SET_ACTIVE_QUIZ_ANSWERS",
-      payload: quizData[params.quizId as keyof typeof quizData].answers,
+      payload: response?.answers,
+    });
+    quizDispatch({
+      type: "SET_CATEGORY_NAME",
+      payload: response?.categoryName,
     });
   };
 
