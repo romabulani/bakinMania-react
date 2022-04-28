@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./auth.css";
 import { useSignupHandler } from "hooks";
+import { useAuth } from "contexts";
 
 function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -10,10 +11,20 @@ function SignupForm() {
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
   const location: any = useLocation();
+  const { authUser } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (authUser) navigate("/", { replace: true });
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="auth-container flex-column-center signup-container middle-content">
       <h4 className="heading4">SIGN UP</h4>
-      <form className="form-auth" onSubmit={(e) => signUpHandler(e, location)}>
+      <form
+        className="form-auth"
+        onSubmit={(e) => signUpHandler(e, location)}
+        noValidate
+      >
         <div className="form-input ">
           {" "}
           <label htmlFor="firstName" className="input-label">

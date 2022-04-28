@@ -1,13 +1,11 @@
 import { useAuth } from "contexts";
-import { db } from "../firebase";
-import { collection, getDocs, query, where } from "firebase/firestore";
 import { FormEvent, useReducer } from "react";
-import { login, signup } from "services";
+import { signup } from "services";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 function useSignupHandler() {
-  const { setAuthToken, setAuthUser } = useAuth();
+  const { setAuthUser } = useAuth();
   const navigate = useNavigate();
 
   type AuthFormAndError = {
@@ -181,34 +179,19 @@ function useSignupHandler() {
     e.preventDefault();
     try {
       if (checkValidation()) {
-        await signup(
+        const userObj = await signup(
           formData.firstName + " " + formData.lastName,
           formData.email,
           formData.password
         );
-        const response = await login(formData.email, formData.password);
-        const resUser: any = response?.user;
-        if (resUser) {
-          localStorage.setItem(
-            "authToken",
-            JSON.stringify(resUser?.accessToken)
-          );
-          setAuthToken(resUser.accessToken);
-          const q = query(
-            collection(db, "users"),
-            where("uid", "==", resUser.uid)
-          );
-          const querySnapshot1 = await getDocs(q);
-          querySnapshot1.forEach((doc) => {
-            const userObj: any = doc.data();
-            setAuthUser(userObj);
-            localStorage.setItem("authUser", JSON.stringify(userObj));
-          });
+        if (userObj) {
+          setAuthUser(userObj);
+          localStorage.setItem("authUser", JSON.stringify(userObj));
           toast.success("Signed up and Logged in successfully!");
           if (location.state)
             navigate(location?.state?.from?.pathname, { replace: true });
           else navigate("/");
-        } else toast.error("Account already exists!");
+        }
       }
     } catch (e) {
       console.error("signUpHandler : Couldn't signup", e);

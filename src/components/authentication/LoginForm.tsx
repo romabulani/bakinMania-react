@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./auth.css";
@@ -13,9 +13,12 @@ function LoginForm() {
   const [errorData, setErrorData] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const location: any = useLocation();
-  const { setAuthToken, setAuthUser } = useAuth();
+  const { setAuthUser, authUser } = useAuth();
   const navigate = useNavigate();
-
+  useEffect(() => {
+    if (authUser) navigate("/", { replace: true });
+    // eslint-disable-next-line
+  }, []);
   const loginHandler = async (e: FormEvent, isGuest: boolean) => {
     e.preventDefault();
     try {
@@ -37,12 +40,6 @@ function LoginForm() {
         if (response) {
           const resUser: any = response?.user;
           if (resUser) {
-            localStorage.setItem(
-              "authToken",
-              JSON.stringify(resUser?.accessToken)
-            );
-
-            setAuthToken(resUser.accessToken);
             const q = query(
               collection(db, "users"),
               where("uid", "==", resUser.uid)
@@ -69,7 +66,11 @@ function LoginForm() {
   return (
     <div className="auth-container flex-column-center middle-content">
       <h4 className="heading4">LOGIN</h4>
-      <form className="form-auth" onSubmit={(e) => loginHandler(e, false)}>
+      <form
+        className="form-auth"
+        onSubmit={(e) => loginHandler(e, false)}
+        noValidate
+      >
         <div className="form-input">
           <label htmlFor="email" className="input-label">
             Email *
@@ -87,6 +88,7 @@ function LoginForm() {
               }))
             }
             onFocus={() => setErrorData(false)}
+            required
           />
         </div>
         <div className="form-input">
@@ -107,6 +109,7 @@ function LoginForm() {
                 }))
               }
               onFocus={() => setErrorData(false)}
+              required
             />
             <button
               className="btn-no-decoration cursor-pointer"
@@ -153,6 +156,16 @@ function LoginForm() {
             replace
           >
             Create One
+          </Link>
+        </div>
+        <div>
+          <span>Forgot Password?</span>
+          <Link
+            to="/passwordreset"
+            className="btn-link btn-link-primary"
+            replace
+          >
+            Reset here
           </Link>
         </div>
       </form>

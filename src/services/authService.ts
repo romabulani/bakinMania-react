@@ -1,9 +1,11 @@
+import { userType } from "contexts/types";
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { collection, addDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
 import { auth, db } from "../firebase";
 
 const login = async (email: string, password: string) => {
@@ -19,16 +21,18 @@ const signup = async (name: string, email: string, password: string) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
     const user = res.user;
-    await addDoc(collection(db, "users"), {
+    const initialUserObj: userType = {
       uid: user.uid,
       name,
-      authProvider: "local",
       email,
       quizzesTaken: [],
       totalScore: 0,
-    });
-    login(email, password);
+    };
+    const docRef = await addDoc(collection(db, "users"), initialUserObj);
+    if (docRef) return initialUserObj;
+    else throw new Error();
   } catch (err) {
+    toast.error("Account Already exists");
     console.error(err);
   }
 };
