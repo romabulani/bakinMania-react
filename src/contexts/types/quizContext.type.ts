@@ -7,6 +7,7 @@ export type QuizQuestionAndAnswers = Array<QuestionAnswersObj>;
 
 export type QuizType = {
   category: string;
+  categoryName: string;
   selectedAnswers: Array<string>;
   score: number;
   activeQuestion: number;
@@ -17,6 +18,10 @@ export type QuizType = {
 export type QuizActionType =
   | {
       type: "SET_CATEGORY";
+      payload: string;
+    }
+  | {
+      type: "SET_CATEGORY_NAME";
       payload: string;
     }
   | {

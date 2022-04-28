@@ -1,4 +1,3 @@
-
 <div align="center">
   <img src="https://res.cloudinary.com/dtrjdcrme/image/upload/v1649999358/quiz/logo_an0oti.webp" height="100" width="100" alt="logo"/>
   <h1>Bakin Mania</h1>
@@ -6,6 +5,7 @@
  </div>
 
 ## How to run the app locally?
+
 ```
 $ git https://github.com/romabulani/bakinMania-react.git
 $ cd bakinMania-react
@@ -14,9 +14,11 @@ $ npm start
 ```
 
 ## Screens in this project
+
 - Landing Page
 - Rules Page
 - Authentication (Login, Signup and Logout) Pages
+- Password Reset Page
 - MCQ based Question Page
 - Result Page with Answers & Score
 - Leaderboard
@@ -24,7 +26,11 @@ $ npm start
 - 404 (Not Found) Page
 
 ## Features
+
 - Authentication including Login, Signup and Logout using Firebase. All the authentication forms have the proper validation.
+- Password Reset Form with validation, the reset link will be sent to user's email.
+- Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category.
+- Share Quiz - User can share the link of the quiz with others.
 - Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category. User can share the quiz with others.
 - Rules page displaying the rules for the Quiz
 - Question Page with four options.
@@ -41,6 +47,7 @@ $ npm start
 - All the screens are Responsive.
 
 ## Tech Stack and Tools
+
 - Typescript with React JS
 - Firebase for Backend
 - React Router v6
@@ -51,7 +58,9 @@ $ npm start
 - Cloudinary for Image Hosting of Quiz Thumbnails
 
 ## Live Link
+
 [Bakin Mania](https://bakin-mania.netlify.app/)
 
 ## Demo Video
+
 https://user-images.githubusercontent.com/42478246/165312993-1c10d758-f529-40ab-a2fe-53dd4e56a0c3.mp4

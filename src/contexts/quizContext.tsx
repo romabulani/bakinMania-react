@@ -6,6 +6,7 @@ const QuizContext = createContext<QuizContextType>({} as QuizContextType);
 const QuizProvider = ({ children }: { children: React.ReactNode }) => {
   const initialQuizState: QuizType = {
     category: "",
+    categoryName: "",
     activeQuestion: -1,
     selectedAnswers: [],
     score: 0,
@@ -19,6 +20,11 @@ const QuizProvider = ({ children }: { children: React.ReactNode }) => {
         return {
           ...state,
           category: action.payload,
+        };
+      case "SET_CATEGORY_NAME":
+        return {
+          ...state,
+          categoryName: action.payload,
         };
       case "SET_ANSWERS":
         return {

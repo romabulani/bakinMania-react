@@ -16,6 +16,7 @@ import {
   NotFound,
   Leaderboard,
   Loader,
+  PasswordReset,
 } from "components";
 import { useQuiz, useTheme } from "contexts";
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<SignupForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route path="/passwordreset" element={<PasswordReset />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route
             path="/quiz/:quizId"

@@ -13,3 +13,4 @@ export { NotFound } from "./shared/NotFound";
 export { Leaderboard } from "./leaderboard/Leaderboard";
 export { Dashboard } from "./profile/Dashboard";
 export { Loader } from "./shared/Loader";
+export { PasswordReset } from "./authentication/PasswordReset";

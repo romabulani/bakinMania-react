@@ -6,7 +6,7 @@ import "./profile.css";
 import { Dashboard } from "./Dashboard";
 
 function ProfileDetails() {
-  const { setAuthToken, authUser, setAuthUser } = useAuth();
+  const { authUser, setAuthUser } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -14,10 +14,8 @@ function ProfileDetails() {
   }, [setAuthUser]);
 
   function logoutHandler() {
-    localStorage.removeItem("authToken");
     localStorage.removeItem("authUser");
     toast.success("Logout successful");
-    setAuthToken("");
     setAuthUser(null);
     navigate("/");
   }
@@ -27,7 +25,7 @@ function ProfileDetails() {
       <div className="profile-dashboard-container">
         <div className="logout-container">
           <div className="large-font-size account-header">
-            Account Details<hr className="section-line"></hr>
+            Account Details<hr></hr>
           </div>
           <div className="flex-row-center profile-details">
             <div className="flex-column  profile-column">
@@ -36,7 +34,7 @@ function ProfileDetails() {
             </div>
           </div>
           <div className="large-font-size account-header">
-            Account Settings<hr className="section-line"></hr>
+            Account Settings<hr></hr>
           </div>
           <button
             className="btn btn-outline-error logout-btn"

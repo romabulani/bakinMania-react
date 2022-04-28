@@ -15,7 +15,6 @@ function Dashboard() {
     email: string;
     name: string;
     uid: string;
-    authProvider: string;
     quizzesTaken: Array<QuizDataTypeFromFirebase>;
     totalScore: number;
   } | null;

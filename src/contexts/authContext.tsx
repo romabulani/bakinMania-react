@@ -4,18 +4,12 @@ import { AuthContextType } from "./types";
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const localStorageAuth = localStorage.getItem("authToken");
   const localStorageUser = localStorage.getItem("authUser");
-  const [authToken, setAuthToken] = useState<string>(
-    localStorageAuth ? localStorageAuth : ""
-  );
   const [authUser, setAuthUser] = useState(
     localStorageUser ? JSON.parse(localStorageUser) : null
   );
   return (
-    <AuthContext.Provider
-      value={{ authToken, setAuthToken, authUser, setAuthUser }}
-    >
+    <AuthContext.Provider value={{ authUser, setAuthUser }}>
       {children}
     </AuthContext.Provider>
   );
