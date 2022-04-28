@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useQuiz } from "contexts";
-import { categoryData } from "data";
+import { useCategory, useQuiz } from "contexts";
 import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -9,6 +8,7 @@ import "./home.css";
 function Home() {
   const scrollRef = useRef<null | HTMLDivElement>(null);
   const { quizDispatch } = useQuiz();
+  const { categories } = useCategory();
   const scrollToCategories = () => {
     if (scrollRef && scrollRef.current)
       scrollRef.current.scrollIntoView({
@@ -18,10 +18,9 @@ function Home() {
   };
 
   useEffect(() => {
-    quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: -1 });
     quizDispatch({ type: "RESET_ANSWERS" });
-    quizDispatch({ type: "SET_SCORE", payload: 0 });
-  }, [quizDispatch]);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <>
@@ -41,7 +40,7 @@ function Home() {
       <main className="container-main flex-column-center">
         <h3 className="text-center heading3">Quiz Categories</h3>
         <div className="cards flex-row-center" ref={scrollRef}>
-          {categoryData.map((category) => (
+          {categories.map((category) => (
             <div className="card card-default" key={category._id}>
               <div className="card-img-container">
                 <img
