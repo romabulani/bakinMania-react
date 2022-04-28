@@ -31,6 +31,7 @@ $ npm start
 - Password Reset Form with validation, the reset link will be sent to user's email.
 - Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category.
 - Share Quiz - User can share the link of the quiz with others.
+- Landing Page with Featured Quiz Categories. User can choose the quiz to play by selecting category. User can share the quiz with others.
 - Rules page displaying the rules for the Quiz
 - Question Page with four options.
 - Timer for every question.
