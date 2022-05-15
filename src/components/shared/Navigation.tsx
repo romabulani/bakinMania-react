@@ -13,7 +13,7 @@ function Navigation() {
             <img
               src={
                 theme === "dark"
-                  ? "https://res.cloudinary.com/dtrjdcrme/image/upload/v1650883482/quiz/logo_darktheme.webp"
+                  ? "https://res.cloudinary.com/dtrjdcrme/image/upload/v1652524820/quiz/logo_darktheme2.webp"
                   : "https://res.cloudinary.com/dtrjdcrme/image/upload/v1649076577/ecommerce/logo_sr3h5w.webp"
               }
               alt="muffin-logo"
