@@ -51,3 +51,7 @@
 [data-theme="dark"] .input-label {
   color: var(--text-color);
 }
+
+::-webkit-scrollbar-thumb {
+  background: var(--default-color);
+}
