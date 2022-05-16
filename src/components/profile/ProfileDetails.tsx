@@ -1,17 +1,27 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useAuth } from "contexts";
+import { useAuth, useQuiz } from "contexts";
 import "./profile.css";
 import { Dashboard } from "./Dashboard";
 
 function ProfileDetails() {
   const { authUser, setAuthUser } = useAuth();
   const navigate = useNavigate();
+  const { quizDispatch } = useQuiz();
 
   useEffect(() => {
     if (localStorage.authUser) setAuthUser(JSON.parse(localStorage.authUser));
   }, [setAuthUser]);
+
+  useEffect(() => {
+    quizDispatch({
+      type: "SET_ACTIVE_QUESTION",
+      payload: -1,
+    });
+    quizDispatch({ type: "RESET_ANSWERS" });
+    // eslint-disable-next-line
+  }, []);
 
   function logoutHandler() {
     localStorage.removeItem("authUser");

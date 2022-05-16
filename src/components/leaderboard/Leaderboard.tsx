@@ -5,7 +5,7 @@ import "./leaderboard.css";
 
 function Leaderboard() {
   const [userData, setUserData] = useState([]);
-  const { setLoader } = useQuiz();
+  const { setLoader, quizDispatch } = useQuiz();
   useEffect(() => {
     setLoader(true);
     async function getUsers() {
@@ -13,6 +13,12 @@ function Leaderboard() {
       setUserData(response);
     }
     getUsers();
+
+    quizDispatch({
+      type: "SET_ACTIVE_QUESTION",
+      payload: -1,
+    });
+    quizDispatch({ type: "RESET_ANSWERS" });
     const timerId = setTimeout(() => setLoader(false), 1000);
     return () => clearTimeout(timerId);
     // eslint-disable-next-line

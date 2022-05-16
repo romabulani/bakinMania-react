@@ -31,7 +31,7 @@ function Result() {
   }, []);
 
   useEffect(() => {
-    if (selectedAnswers === []) navigate("/");
+    if (selectedAnswers.length === 0) navigate("/");
   }, [selectedAnswers, navigate]);
 
   return (

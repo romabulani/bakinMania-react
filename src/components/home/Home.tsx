@@ -19,6 +19,10 @@ function Home() {
 
   useEffect(() => {
     quizDispatch({ type: "RESET_ANSWERS" });
+    quizDispatch({
+      type: "SET_ACTIVE_QUESTION",
+      payload: -1,
+    });
     // eslint-disable-next-line
   }, []);
 
