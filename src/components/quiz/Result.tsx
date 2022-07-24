@@ -2,6 +2,7 @@ import { useAuth, useQuiz } from "contexts";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { addScoreToDatabase } from "services";
+import { calculateScore } from "utils";
 import "./result.css";
 
 function Result() {
@@ -17,9 +18,7 @@ function Result() {
   };
 
   useEffect(() => {
-    let innerCurrScore = 0;
-    for (let i = 0; i < activeQuizAnswers.length; i++)
-      if (activeQuizAnswers[i] === selectedAnswers[i]) innerCurrScore += 20;
+    const innerCurrScore = calculateScore(activeQuizAnswers, selectedAnswers);
     setCurrScore(innerCurrScore);
     quizDispatch({ type: "SET_SCORE", payload: innerCurrScore });
     quizDispatch({ type: "SET_ACTIVE_QUESTION", payload: -1 });
