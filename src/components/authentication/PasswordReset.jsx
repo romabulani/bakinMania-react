@@ -13,7 +13,6 @@ function PasswordReset() {
   const { authUser } = useAuth();
   useEffect(() => {
     if (authUser) navigate("/", { replace: true });
-    // eslint-disable-next-line
   }, []);
 
   const onPasswordResetClick = async (e) => {

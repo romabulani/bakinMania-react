@@ -26,7 +26,6 @@ function Result() {
       await addScoreToDatabase(innerCurrScore, authUser, quizState);
     }
     addScore();
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

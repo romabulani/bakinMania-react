@@ -10,12 +10,11 @@ function SignupForm() {
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const { formData, formDispatch, errorData, errorDispatch, signUpHandler } =
     useSignupHandler();
-  const location: any = useLocation();
+  const location = useLocation();
   const { authUser } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (authUser) navigate("/", { replace: true });
-    // eslint-disable-next-line
   }, []);
   return (
     <div className="auth-container flex-column-center signup-container middle-content">

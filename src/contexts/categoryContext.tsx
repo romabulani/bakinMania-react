@@ -19,7 +19,6 @@ const CategoryProvider = ({ children }: { children: React.ReactNode }) => {
       setLoader(false);
     }
     getCategoriesFromService();
-    // eslint-disable-next-line
   }, []);
   return (
     <CatgoryContext.Provider value={{ categories }}>

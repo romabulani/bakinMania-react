@@ -18,7 +18,6 @@ function Question() {
       1000
     );
     return () => clearInterval(timerId);
-    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -36,7 +35,6 @@ function Question() {
         setTimerSec(60);
       }
     }
-    // eslint-disable-next-line
   }, [timerSec]);
 
   const onNextClickHandler = () => {
