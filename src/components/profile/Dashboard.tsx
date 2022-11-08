@@ -33,7 +33,6 @@ function Dashboard() {
     getUserDashboard();
     const timerId = setTimeout(() => setLoader(false), 500);
     return () => clearTimeout(timerId);
-    // eslint-disable-next-line
   }, []);
 
   const quizPassed = (quizScore: number) => (quizScore >= 60 ? "PASS" : "FAIL");

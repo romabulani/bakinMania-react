@@ -23,7 +23,6 @@ function Home() {
       type: "SET_ACTIVE_QUESTION",
       payload: -1,
     });
-    // eslint-disable-next-line
   }, []);
 
   return (

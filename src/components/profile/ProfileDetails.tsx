@@ -20,7 +20,6 @@ function ProfileDetails() {
       payload: -1,
     });
     quizDispatch({ type: "RESET_ANSWERS" });
-    // eslint-disable-next-line
   }, []);
 
   function logoutHandler() {

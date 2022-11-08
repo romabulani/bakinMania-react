@@ -8,7 +8,7 @@ function NotFound() {
         alt="page not found"
         src="https://res.cloudinary.com/dtrjdcrme/image/upload/v1649009736/ecommerce/404Image_s8lokh.webp"
       />
-      <p className="large-font-size heading4">We couldn't find any matches!</p>
+      <p className="large-font-size heading4">We couldn't find matches!</p>
       <div className="flex-row-center">
         <Link
           to="/"

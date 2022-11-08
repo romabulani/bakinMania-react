@@ -6,11 +6,11 @@ const getDashboard = async (authUser: userType) => {
   const dbUser = collection(db, "users");
   const data = await getDocs(dbUser);
 
-  let userData: any;
+  let userData;
 
   data.docs.forEach((doc) => {
     if (doc.data().uid.toString() === authUser?.uid) {
-      userData = doc.data();
+      userData = doc.data() as userType;
       return;
     }
   });
