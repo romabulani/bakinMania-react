@@ -1,10 +1,11 @@
 import { useQuiz } from "contexts";
+import { userType } from "contexts/types";
 import { useEffect, useState } from "react";
 import { getLeaderboard } from "services";
 import "./leaderboard.css";
 
 function Leaderboard() {
-  const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState<[userType]>();
   const { setLoader, quizDispatch } = useQuiz();
   useEffect(() => {
     setLoader(true);
@@ -21,7 +22,6 @@ function Leaderboard() {
     quizDispatch({ type: "RESET_ANSWERS" });
     const timerId = setTimeout(() => setLoader(false), 1000);
     return () => clearTimeout(timerId);
-    // eslint-disable-next-line
   }, []);
 
   return (
@@ -42,16 +42,16 @@ function Leaderboard() {
           </tr>
         </thead>
         <tbody>
-          {userData.map((user: any, index) => (
-            <tr key={user.uid}>
+          {userData?.map((user, index) => (
+            <tr key={user?.uid}>
               <td data-label="Rank" className="table-cell">
                 {index + 1}
               </td>
               <td data-label="Name" className="table-cell">
-                {user.name}
+                {user?.name}
               </td>
               <td data-label="Total Score" className="table-cell">
-                {user.totalScore}
+                {user?.totalScore}
               </td>
             </tr>
           ))}

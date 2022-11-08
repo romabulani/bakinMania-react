@@ -48,8 +48,7 @@ export type QuizActionType =
       type: "RESET_ANSWERS";
     }
   | {
-      type: string;
-      payload?: any;
+      type: "DEFAULT_STATE";
     };
 
 export type QuizContextType = {
